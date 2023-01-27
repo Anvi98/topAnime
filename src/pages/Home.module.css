@@ -23,8 +23,10 @@
 .animeCard {
   text-decoration: none;
   color: brown;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: 0.3s;
+  background-color: #ffff;
+  padding: 10px;
 }
 
 .animeCard:hover {

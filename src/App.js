@@ -4,6 +4,8 @@ import Header from "./Header";
 import Anime from "./pages/Anime";
 import Home from "./pages/Home";
 
+import styles from "./App.module.css";
+
 const App = () => {
   const [title, setTitle] = useState("");
   const [searchAnimes, setSearchAnimes] = useState([]);
@@ -40,13 +42,13 @@ const App = () => {
 
   }
   return (
-  <>
+  <div className={styles.containerApp}>
   <Header title={title} handleChange={handleChange} handleSubmit={handleSubmit}/>
   <Routes>
     <Route path="/" element={<Home searchAnimes={searchAnimes}/>}/>
     <Route path="/anime/:id" element={<Anime/>}/>
   </Routes>
-  </>)
+  </div>)
 }
 
 export default App;
