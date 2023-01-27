@@ -1,0 +1,48 @@
+.anime_details {
+  width: 70vw;
+  margin: auto;
+  margin-top: 50px;
+
+}
+
+.basic_info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: left;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgb(213, 213, 213);
+}
+
+.test {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info,
+.info1 {
+  width: 12vw;
+  font-weight: bold;
+  margin: 3px;
+}
+
+.info1,
+.info_value1 {
+  margin-top: 20px;
+}
+
+.synopsis {
+  margin: 30px;
+}
+
+.synopsis h2 {
+  text-align: center;
+  color: #cd003e;
+  margin: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .test {
+    flex-direction: column;
+  }
+}

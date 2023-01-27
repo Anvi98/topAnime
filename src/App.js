@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, useLocation} from "react-router-dom";
+import { useEffect, useState } from "react";
+import Header from "./Header";
+import Anime from "./pages/Anime";
+import Home from "./pages/Home";
 
-function App() {
+const App = () => {
+  const [title, setTitle] = useState("");
+  const [searchAnimes, setSearchAnimes] = useState([]);
+  const location = useLocation();
+  const value = location.state;
+  const url = `https://api.jikan.moe/v4/anime?q=${title}&sfw`;
+
+  
+  useEffect(()=>{
+    handleRedirect(value);
+  }, [value]);
+
+  const handleRedirect = (value) =>{
+    setTitle(value);
+    searchAnime(url);
+    setTitle('');
+  }
+
+  const handleChange = (e) => {
+    setTitle(e.target.value);
+  }
+
+  const searchAnime = async (url) => {
+    const response = await fetch(url);
+    const animes = await response.json();
+    console.log(animes.data);
+    setSearchAnimes(animes.data);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    searchAnime(url);
+    setTitle('');
+
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <>
+  <Header title={title} handleChange={handleChange} handleSubmit={handleSubmit}/>
+  <Routes>
+    <Route path="/" element={<Home searchAnimes={searchAnimes}/>}/>
+    <Route path="/anime/:id" element={<Anime/>}/>
+  </Routes>
+  </>)
 }
 
 export default App;
