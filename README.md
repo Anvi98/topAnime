@@ -59,7 +59,7 @@
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/GuilhermeGiachellin/Anime-Capstone/issues).
+Feel free to check the [issues page](https://github.com/Anvi98/topAnime/issues).
 
 
 ## Show your support
