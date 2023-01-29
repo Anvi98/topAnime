@@ -31,8 +31,6 @@ const App = () => {
   const handleSubmit = (e) => {
     if(e.key === "Enter" || e.type === "click"){
       dispatch(update(input));
-      console.log("onSubmit...")
-      searchAnime(url);
     }
    // e.preventDefault();
 
