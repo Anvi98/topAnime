@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/topAnime/static/css/main.c877227b.css",
-    "main.js": "/topAnime/static/js/main.6f46cb07.js",
+    "main.css": "/topAnime/static/css/main.e6ec2133.css",
+    "main.js": "/topAnime/static/js/main.36676be2.js",
     "index.html": "/topAnime/index.html",
-    "main.c877227b.css.map": "/topAnime/static/css/main.c877227b.css.map",
-    "main.6f46cb07.js.map": "/topAnime/static/js/main.6f46cb07.js.map"
+    "main.e6ec2133.css.map": "/topAnime/static/css/main.e6ec2133.css.map",
+    "main.36676be2.js.map": "/topAnime/static/js/main.36676be2.js.map"
   },
   "entrypoints": [
-    "static/css/main.c877227b.css",
-    "static/js/main.6f46cb07.js"
+    "static/css/main.e6ec2133.css",
+    "static/js/main.36676be2.js"
   ]
 }
