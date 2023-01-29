@@ -1,31 +1,29 @@
-import { Routes, Route, useLocation} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Header from "./Header";
 import Anime from "./pages/Anime";
 import Home from "./pages/Home";
+import { update } from "./feature/titleSlice";
 
 import styles from "./App.module.css";
 
 const App = () => {
-  const [title, setTitle] = useState("");
   const [searchAnimes, setSearchAnimes] = useState([]);
-  const location = useLocation();
-  const value = location.state;
+  const dispatch = useDispatch();
+  const title = useSelector(state => state.title.title);
   const url = `https://api.jikan.moe/v4/anime?q=${title}&sfw`;
 
-  
-  useEffect(()=>{
-    handleRedirect(value);
-  }, [value]);
+  useEffect(()=> {
+    HomeData();
+  }, []);
 
-  const handleRedirect = (value) =>{
-    setTitle(value);
+  const HomeData = () => {
     searchAnime(url);
-    setTitle('');
   }
 
   const handleChange = (e) => {
-    setTitle(e.target.value);
+    dispatch(update(e.target.value));
   }
 
   const searchAnime = async (url) => {
@@ -37,15 +35,16 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(update(e.target.value));
     searchAnime(url);
-    setTitle('');
-
   }
+
+  
   return (
   <div className={styles.containerApp}>
-  <Header title={title} handleChange={handleChange} handleSubmit={handleSubmit}/>
+  <Header handleChange={handleChange} handleSubmit={handleSubmit}/>
   <Routes>
-    <Route path="/" element={<Home searchAnimes={searchAnimes}/>}/>
+    <Route exact path="/topAnime" element={<Home searchAnimes={searchAnimes}/>}/>
     <Route path="/anime/:id" element={<Anime/>}/>
   </Routes>
   </div>)
