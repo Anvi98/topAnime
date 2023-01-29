@@ -34,7 +34,6 @@ const App = () => {
     }
    // e.preventDefault();
 
-
   }
   
   return (

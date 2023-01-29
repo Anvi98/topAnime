@@ -23,6 +23,9 @@
 - Use JavaScript to make websites dynamic and build basic single page apps.
 - React 18
 - React Router V6
+- React-Redux
+- Redux
+- Native Fetch
 - Use ES6 syntax.
 - Use ES6 modules.
 - Use callbacks and promises.
