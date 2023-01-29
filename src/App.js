@@ -10,20 +10,15 @@ import styles from "./App.module.css";
 
 const App = () => {
   const [searchAnimes, setSearchAnimes] = useState([]);
+  const [input, setInput] = useState('');
   const dispatch = useDispatch();
   const title = useSelector(state => state.title.title);
   const url = `https://api.jikan.moe/v4/anime?q=${title}&sfw`;
 
-  useEffect(()=> {
-    HomeData();
-  }, []);
-
-  const HomeData = () => {
-    searchAnime(url);
-  }
-
   const handleChange = (e) => {
-    dispatch(update(e.target.value));
+    setInput(e.target.value);
+
+    console.log("onChange...")
   }
 
   const searchAnime = async (url) => {
@@ -34,17 +29,21 @@ const App = () => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(update(e.target.value));
-    searchAnime(url);
-  }
+    if(e.key === "Enter" || e.type === "click"){
+      dispatch(update(input));
+      console.log("onSubmit...")
+      searchAnime(url);
+    }
+   // e.preventDefault();
 
+
+  }
   
   return (
   <div className={styles.containerApp}>
-  <Header handleChange={handleChange} handleSubmit={handleSubmit}/>
+  <Header handleChange={handleChange} handleSubmit={handleSubmit} input={input}/>
   <Routes>
-    <Route exact path="/topAnime" element={<Home searchAnimes={searchAnimes}/>}/>
+    <Route exact path="/topAnime" element={<Home searchAnimes={searchAnimes} url={url}/>}/>
     <Route path="/anime/:id" element={<Anime/>}/>
   </Routes>
   </div>)

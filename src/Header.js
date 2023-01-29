@@ -3,17 +3,17 @@ import styles from "./Header.module.css";
 import { useSelector } from "react-redux";
 
 const Header = (props) => {
-  const { handleChange, handleSubmit}= props;
+  const { handleChange, handleSubmit, input} = props;
   const title = useSelector((state) => state.title.title);
   console.log(title)
   return ( 
   <>
   <div className={styles.container}>
-    <Link to="/" className={styles.title}>WATCH <span className={styles.topTitle}>TOP ANIME</span></Link>
-      <form onSubmit={handleSubmit}>
-      <input type="text" value ={title} onChange={handleChange} placeholder="one piece, shingeki..." className={styles.inputBar} />
-      <Link to="/"><button type="submit" className={styles.searchButton}>Search</button></Link>
-    </form>
+    <Link to="/topAnime" className={styles.title}>WATCH <span className={styles.topTitle}>TOP ANIME</span></Link>
+      <form onKeyDown={handleSubmit}>
+        <input type="text" value ={input} onChange={handleChange} placeholder="one piece, shingeki..." className={styles.inputBar} />
+        <Link to="/topAnime" ><button className={styles.searchButton} onClick={handleSubmit}>Search</button></Link>
+      </form>
   </div>
   </> );
 }

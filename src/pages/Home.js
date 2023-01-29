@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
-// import { useFetch } from "./useFetch";
+import { useFetch } from "./useFetch";
 
 import styles from "./Home.module.css";
 
 
 const Home = (props) => {
-  const {searchAnimes} = props;
-  // const { data } = useFetch("https://api.jikan.moe/v4/top/anime");
-  console.log(searchAnimes);
+  const {url} = props;
+  const { data } = useFetch(url);
 
   return ( 
   <>
     <div className={styles.container}>
       {
-        searchAnimes.map(anime => (
+        data?.length > 0 ?
+        data.map(anime => (
           <Link to={`/anime/${anime.mal_id}`} className={styles.animeCard}>
           <p className={styles.score}>{anime.score}</p> 
           <div className={styles.anime}>
@@ -21,7 +21,7 @@ const Home = (props) => {
             <p key={anime.mal_id} className={styles.titleAnime}>{anime.title}</p>©
           </div>
           </Link>
-        )) 
+        )) : <h2>No Anime</h2>
       }
       </div>
         {/* // data.map(anime => (
