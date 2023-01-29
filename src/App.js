@@ -41,7 +41,7 @@ const App = () => {
   <div className={styles.containerApp}>
   <Header handleChange={handleChange} handleSubmit={handleSubmit} input={input}/>
   <Routes>
-    <Route exact path="/topAnime" element={<Home searchAnimes={searchAnimes} url={url}/>}/>
+    <Route exact path="/topAnime" element={<Home url={url}/>}/>
     <Route path="/anime/:id" element={<Anime/>}/>
   </Routes>
   </div>)
